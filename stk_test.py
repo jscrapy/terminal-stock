@@ -51,11 +51,11 @@ def printStock():
             temp = stockInfo[0].split('_')[2].replace('"', '').split('=')
             code = temp[0]
             name = temp[1]
-            todayBeginPrice = string.atof(stockInfo[1])
-            yersterdayEndPrice = string.atof(stockInfo[2])
-            currentPrice = string.atof(stockInfo[3])
-            todayMaxPrice = string.atof(stockInfo[4])
-            todayMinPrice = string.atof(stockInfo[5])
+            todayBeginPrice = float(stockInfo[1])
+            yersterdayEndPrice = float(stockInfo[2])
+            currentPrice = float(stockInfo[3])
+            todayMaxPrice = float(stockInfo[4])
+            todayMinPrice = float(stockInfo[5])
             per = u'停牌  ' if '%.2f' % todayBeginPrice == '0.00' else ('%+.2f' % (
                     (currentPrice / yersterdayEndPrice - 1) * 100)) + '%'
             # 红涨绿跌
@@ -71,7 +71,7 @@ def printStock():
             floatMoneyColor = bcolors.WHITE
             if (code in mystock) and (mystock[code] != None):
                 stockQuantity = int(mystock[code][0])
-                stockCost = string.atof(mystock[code][1])
+                stockCost = float(mystock[code][1])
                 if '%.2f' % todayBeginPrice != '0.00':
                     floatMoney = (currentPrice - stockCost) * stockQuantity
                     stockRatio = ('%+.2f' % ((currentPrice / stockCost - 1) * 100)) + '%'
